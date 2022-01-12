@@ -1,6 +1,8 @@
 function Header() {
     return(
         <header className="App-header">
+          <div id="tloo"></div>
+          <div className="rozmycie"></div>
         <nav className="menu">
           <div className="dropdown">
             <a href="/">Start</a>

@@ -1,6 +1,6 @@
 import logo from './logo.png';
 import user from './user.png';
-import './App.css';
+import './style.css';
 import {Route, BrowserRouter, Routes} from 'react-router-dom';
 //github.com/remix-run/react-router/blob/main/docs/getting-started/tutorial.md
 import Mainpage from './main.js';

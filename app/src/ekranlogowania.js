@@ -3,25 +3,22 @@ import Header from './header.js';
 function Ekranlogowania() {
   return (
   <div className="App">
-  <body>
-
-    <Header/>
-
-    <div id="content_m">
-    <form>
+  
+  <body id="tloo">
+    <div className="lewa"></div>
+    <div className="srodek">
+    <form className="logowaniee">
       <label className="logowanie">
-        Login
-        <input type="text" className="dystans" />
-        Hasło
-        <input type="text" className="paliwo" /> 
-        </label>
+        <input type="text" className="login" placeholder="Login" />
+        <input type="text" className="login" placeholder="Haslo" /> 
+      </label>
       <input type="submit" value="Wyślij" />
+      <input type="submit" value="Anuluj" href="/" id="anuluj"/>
       </form>
-      
     </div>
-
-      </body>
-    </div>
+    <div className="prawa"></div>
+  </body>
+  </div>
   );
 }
 
