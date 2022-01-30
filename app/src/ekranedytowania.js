@@ -2,11 +2,12 @@ import axios from 'axios'; //wysyłanie zapytania na serwer
 import Header from './header.js'
 import react from 'react' //do useEffect, useState - zmienna do aktualizowania
 
+
 function Ekranedytowania() {
   const [tabela, Ustawienie_tabela]=react.useState(null) //tabela wierszy, tabela -> zmienna
   function Edycja(){
-    axios.get('http://localhost:3001/pobierz').then(wartosci=>{
-     const wiersze = wartosci.data.map(rekord=>{
+    axios.get(`http://localhost:3001/pobierz/}`).then(wartosci=>{
+     const wiersze = wartosci.data.map(rekord=>{ 
       return (
           <tr>
             <td>{rekord.Dystans}</td>
@@ -22,8 +23,6 @@ function Ekranedytowania() {
   }
 
   function Aktualizujformularz(Dystans,Paliwo,ID){
-    console.log(document.querySelector('#Dystans'))
-
     document.querySelector('#Dystans').value=Dystans
     document.querySelector('#Paliwo').value=Paliwo
     document.querySelector('#id').value=ID
@@ -35,12 +34,12 @@ function Ekranedytowania() {
     let id = event.target.id.value
     let wynik =  ((spalone/dystans)*100).toFixed(2)
 
-    console.log('sprawdzenie wyoknania')
     axios.post(`http://localhost:3001/update`, {_dystans: dystans, _paliwo: spalone, _wynik: wynik, id: id}).then(Odpowiedz=>{
-      console.log(Odpowiedz)
     })}
 
   react.useEffect(Edycja,[])
+
+
 
   return (
   <body>
@@ -58,11 +57,11 @@ function Ekranedytowania() {
       <input type="hidden" className="" id="id"></input>
       <label>
         <span>Przejechany dystans:</span>
-        <input type="text" className="formularz" id="Dystans"/>
+        <input type="text" className="formularz" id="Dystans" placeholder="Podaj wartość w km"/>
         <span>Spalone paliwo:</span>
-        <input type="text" className="formularz" id="Paliwo"/> 
-        </label>
-      <input type="submit" value="Edytuj"/>
+        <input type="text" className="formularz" id="Paliwo" placeholder="Podaj wartość w L"/> 
+      </label>
+      <input type="submit" className="przycisk" value="Edytuj"/>
       </form>
       </div>
       
@@ -83,7 +82,6 @@ function Ekranedytowania() {
         {tabela}
 
         </tbody>
-
       </table>
 
       </div>

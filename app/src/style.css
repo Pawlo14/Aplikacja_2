@@ -1,6 +1,6 @@
+@import url("./menu.css");
+@import url("./formularz.css");
 
-@import url("./App.css");
-@import url("./login.css");
 
 Body {
     background: #141E26 url("./tlo.png") fixed no-repeat;
@@ -8,46 +8,10 @@ Body {
     font-size: 100%;
     font-family: Arial;
     color: white;
-  }
-  
-.formularz {
-    color:white;
-    font-family: Arial;
-    font-weight:500;
-    font-size: 18px;
-    border-radius: 5px;
-    line-height: 22px;
-    background-color: transparent;
-    border:2px solid #d82828;
-    transition: all 0.3s;
-    padding: 13px;
-    width:100%;
-    box-sizing: border-box;
-    outline:0;
-    margin: 15px auto;
 }
 
-.formularz:focus { 
-    border:2px solid #ffffff;
-}
-
-[type="submit"] {
-     font-family: Arial;
-     width: 100%;
-     background:#d82828;
-     border-radius:5px;
-     border:0;
-     cursor:pointer;
-     color:white;
-     font-size:24px;
-     padding-top:10px;
-     padding-bottom:10px;
-     transition: all 0.5s;
-     margin-top:-4px;
-     font-weight:700;
-}
-[type="submit"]:hover { 
-    background:#383838; 
+a {
+    color: white;
 }
 
 .lewa {
@@ -85,7 +49,6 @@ span {
     padding-top: 10rem;
     padding-left: 10rem;
     text-align: left;
-    
 }
 
 h1 {
@@ -112,4 +75,5 @@ p {
 
 table {
     padding: 15rem;
+
 }
