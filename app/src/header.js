@@ -1,3 +1,5 @@
+import CookieManager from "smp-cookie-manager";
+
 function Header() {
     return(
         <header className="App-header">
@@ -8,6 +10,7 @@ function Header() {
           <a href="dodawanie">Dodaj</a>
           <a href="edytowanie">Edytuj</a>
           <a href="logowanie">Profil</a>
+          <a href="" onClick={()=>CookieManager.deleteCookie('zalogowany')}>Wyloguj</a>
         </nav>
     </header>
     )

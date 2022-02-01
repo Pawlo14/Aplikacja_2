@@ -1,7 +1,6 @@
 import Header from './header.js';
-import user from './user.svg';
 import axios from 'axios';
-import cookie from './cookie.js'
+import CookieManager from 'smp-cookie-manager';
 
 function Ekrandodawania() {
 
@@ -12,14 +11,17 @@ function Ekrandodawania() {
     let wynik =  ((spalone/dystans)*100).toFixed(2)
     event.target.wynik.value=wynik
 
-    if(cookie('zalogowany'))
+    if(CookieManager.getCookieValue('zalogowany'))
     {
       console.log(true)
-
-      axios.post("http://localhost:3001/obliczenia", {_dystans: dystans, _paliwo: spalone, _wynik: wynik, login: cookie('zalogowany')}).then(Odpowiedz=>{
-      console.log(Odpowiedz)
-
-     })
+      CookieManager.getCookieValue('zalogowany').then(cookievalue=>{
+        console.log(cookievalue)
+        axios.post("http://localhost:3001/obliczenia", {_dystans: dystans, _paliwo: spalone, _wynik: wynik, login: cookievalue.value}).then(Odpowiedz=>{
+          console.log(Odpowiedz)
+    
+         })
+      })
+      
     }
     else
     {

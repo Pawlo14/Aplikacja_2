@@ -1,32 +1,30 @@
 import axios from 'axios';
-import cookie,{ addCookie, removeCookie } from './cookie.js';  //import addCookie i removeCookie, oraz default getCookieValue
-
+import CookieManager from 'smp-cookie-manager';
 
 function Ekranlogowania() {
 
-  function logowanie(event){
-    event.preventDefault()
+  function logowanie(event){ //event bo korzystam z eventu onSubmit
+    event.preventDefault() //blokuje domyślną akcję
     let _login = event.target.login.value
     let _haslo = event.target.haslo.value
     console.table({login: _login, password: _haslo})
 
-  
     axios.post(`http://localhost:3001/login`, {login: _login, haslo: _haslo})
     .then(Odpowiedz=>{
     if (Odpowiedz.status === 200)
       {
-        removeCookie('zalogowany')
-        addCookie('zalogowany', _login)
+        console.log(Odpowiedz)
+        CookieManager.createCookie('zalogowany', _login, true)
         window.location.pathname='/'
       }
     else
       {
-        removeCookie('zalogowany')
+        CookieManager.deleteCookie('zalogowany')
       }
     console.log()
-
     })
   }
+
 
   return (
   <div className="App">
@@ -42,7 +40,7 @@ function Ekranlogowania() {
         <input type="password" className="formularz" name="haslo" placeholder="Haslo" /> 
       </label>
       <input type="submit" className="przycisk" value="Zaloguj" />
-      <a href="/" id="anuluj">Anuluj</a>
+      <a href="/" id="anuluj"><input type="button" className="przycisk" value="Anuluj" /></a>
       </form>
     </div>
 
